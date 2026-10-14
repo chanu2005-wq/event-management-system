@@ -1,22 +1,38 @@
-import { useNavigate } from "react-router-dom";
+import EventCard from "./EventCard";
+import "./FlipCard.css";
 
-const EventCard = ({ icon, title, description, type }) => {
-  const navigate = useNavigate();
-
+const EventCards = () => {
   return (
-    <div className="event-card">
-      <div className="event-icon">{icon}</div>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <div className="events-container">
+      <EventCard
+        icon="🎂"
+        title="Birthday"
+        description="Celebrate your special moments with an unforgettable birthday event."
+        type="birthday"
+      />
 
-      <button
-        className="btn primary"
-        onClick={() => navigate(`/booking/${type}`)}
-      >
-        Book Event
-      </button>
+      <EventCard
+        icon="💍"
+        title="Wedding"
+        description="Create beautiful memories with a professionally planned wedding."
+        type="wedding"
+      />
+
+      <EventCard
+        icon="🏢"
+        title="Corporate"
+        description="Organize professional corporate events with ease."
+        type="corporate"
+      />
+
+      <EventCard
+        icon="🎉"
+        title="Party"
+        description="Plan exciting parties and create memorable experiences."
+        type="party"
+      />
     </div>
   );
 };
 
-export default EventCard;
+export default EventCards;

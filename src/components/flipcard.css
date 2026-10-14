@@ -1,0 +1,466 @@
+/* ================================
+   HORIZONTAL EVENT CARDS
+================================ */
+
+/* ================================
+   DESKTOP EVENT CARDS
+   1200px and above
+================================ */
+
+.events-container {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 50px 40px;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+
+  align-items: stretch;
+}
+
+/* Each card */
+.events-container .flip-card {
+  width: 100%;
+  height: 400px;
+
+  min-width: 0;
+}
+
+/* ================================
+   LARGE DESKTOP
+================================ */
+
+@media (min-width: 1200px) {
+  .events-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+    max-width: 1400px;
+  }
+
+  .events-container .flip-card {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+/* ================================
+   FLIP CARD
+================================ */
+
+.flip-card {
+  width: 300px;
+  height: 450px;
+
+  flex: 0 1 300px;
+
+  position: relative;
+
+  perspective: 1100px;
+
+  cursor: pointer;
+
+  touch-action: pan-y;
+
+  user-select: none;
+}
+
+.flip-card.is-dragging {
+  cursor: grabbing;
+}
+
+/* ================================
+   ROTOR
+================================ */
+
+.flip-card__rotor {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+
+  transform-style: preserve-3d;
+}
+
+/* ================================
+   CARD FACES
+================================ */
+
+.flip-card__face {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  transform-style: preserve-3d;
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+}
+
+.flip-card__face--front {
+  transform: rotateY(0deg);
+}
+
+.flip-card__face--back {
+  transform: rotateY(180deg);
+}
+
+/* ================================
+   GLARE
+================================ */
+
+.flip-card__glare {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  border-radius: inherit;
+
+  background: radial-gradient(
+    circle at var(--fc-gx) var(--fc-gy),
+    rgba(255, 255, 255, 0.35),
+    transparent 40%
+  );
+
+  opacity: var(--fc-sheen, 0);
+}
+
+/* ================================
+   EVENT CARD
+================================ */
+
+.event-card {
+  width: 100%;
+  height: 100%;
+
+  padding: 30px 25px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: linear-gradient(145deg, #ffffff, #f3f6fb);
+
+  color: #1f2937;
+}
+
+/* ================================
+   BACK SIDE
+================================ */
+
+.event-card-back {
+  background: linear-gradient(145deg, #111827, #1f2937);
+
+  color: #ffffff;
+}
+
+/* ================================
+   ICON
+================================ */
+
+.event-icon {
+  width: 75px;
+  height: 75px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 36px;
+
+  background: rgba(37, 99, 235, 0.1);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ================================
+   TITLE
+================================ */
+
+.event-card h3 {
+  margin: 0 0 12px;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ================================
+   DESCRIPTION
+================================ */
+
+.event-card p {
+  margin: 0;
+
+  max-width: 240px;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  opacity: 0.8;
+}
+
+/* ================================
+   DETAILS
+================================ */
+
+.event-details {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  margin-top: 20px;
+
+  font-size: 14px;
+
+  text-align: left;
+}
+
+.event-details span {
+  opacity: 0.9;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.event-card .btn {
+  margin-top: 25px;
+
+  padding: 12px 25px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.event-card .btn.primary {
+  background: #2563eb;
+
+  color: #ffffff;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+.event-card .btn.primary:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* ================================
+   FLIP HINT
+================================ */
+
+.flip-hint {
+  margin-top: 22px;
+
+  font-size: 12px;
+
+  opacity: 0.55;
+
+  letter-spacing: 0.3px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .events-container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .events-container {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 20px;
+  }
+
+  .flip-card {
+    width: 280px;
+    height: 380px;
+
+    flex: 0 0 380px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-card__rotor {
+    transition: none;
+  }
+}
+
+/* =================================
+   EVENT CARDS - HORIZONTAL LAYOUT
+================================= */
+
+.events-container {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  justify-content: space-between;
+  align-items: stretch;
+
+  gap: 30px;
+
+  box-sizing: border-box;
+}
+
+/* =================================
+   INDIVIDUAL CARD
+================================= */
+
+.events-container .flip-card {
+  flex: 1 1 0;
+  width: 0;
+  height: 400px;
+
+  min-width: 0;
+}
+
+/* =================================
+   DESKTOP ≥ 1200px
+================================= */
+
+@media (min-width: 1200px) {
+  .events-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    justify-content: center;
+
+    gap: 30px;
+  }
+
+  .events-container .flip-card {
+    flex: 1 1 0;
+    max-width: 310px;
+    height: 400px;
+  }
+}
+
+/* ================================
+   EVENTS CONTAINER
+================================ */
+
+.events-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 30px;
+
+  box-sizing: border-box;
+}
+
+/* ================================
+   CARD SIZE
+================================ */
+
+.events-container .flip-card {
+  width: 100%;
+  height: 400px;
+  min-width: 0;
+}
+
+/* ================================
+   LARGE DESKTOP
+================================ */
+
+@media (min-width: 1200px) {
+  .events-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .events-container .flip-card {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1199px) {
+  .events-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 30px 20px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .events-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .events-container .flip-card {
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
